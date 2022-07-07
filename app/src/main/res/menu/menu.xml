@@ -3,13 +3,13 @@
     <item
         android:id="@+id/albumFragment"
         android:icon="@drawable/ic_baseline_photo_album_24"
-        android:title="Albums" />
+        android:title="@string/albums" />
     <item
         android:id="@+id/homeFragment"
         android:icon="@drawable/ic_baseline_home_24"
-        android:title="Home" />
+        android:title="@string/home" />
     <item
-        android:id="@+id/settingsFragment"
+        android:id="@+id/favouriteFragment"
         android:icon="@drawable/ic_baseline_settings_24"
-        android:title="Settings" />
+        android:title="@string/favourite" />
 </menu>

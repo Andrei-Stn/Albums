@@ -16,8 +16,8 @@
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home"/>
     <fragment
-        android:id="@+id/settingsFragment"
-        android:name="com.example.albums.Fragments.FragmentSettings"
-        android:label="FragmentSettings"
-        tools:layout="@layout/fragment_settings"/>
+        android:id="@+id/favouriteFragment"
+        android:name="com.example.albums.Fragments.FragmentFavourite"
+        android:label="FragmentFavourite"
+        tools:layout="@layout/fragment_favourite"/>
 </navigation>
