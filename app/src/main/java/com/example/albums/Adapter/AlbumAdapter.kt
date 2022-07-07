@@ -6,9 +6,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.albums.Model.AlbumDataItem
 import com.example.albums.databinding.RowItemsBinding
 
-class AlbumAdapter(val albumList: List<AlbumDataItem>): RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>() {
+class AlbumAdapter(val albumList: List<AlbumDataItem>) :
+    RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>() {
 
-    inner class AlbumViewHolder(val binding: RowItemsBinding): RecyclerView.ViewHolder(binding.root)
+    inner class AlbumViewHolder(val binding: RowItemsBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbumViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)

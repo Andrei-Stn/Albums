@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.albums.Adapter.AlbumAdapter
@@ -24,7 +24,7 @@ class FragmentAlbum: Fragment() {
     private val binding get() = _binding!!
 
     lateinit var albumAdapter: AlbumAdapter
-    lateinit var linearLayoutManager: LinearLayoutManager
+    private lateinit var linearLayoutManager: LinearLayoutManager
 
 
     override fun onCreateView(
@@ -34,17 +34,17 @@ class FragmentAlbum: Fragment() {
     ): View? {
         _binding = FragmentAlbumsBinding.inflate(inflater, container, false)
 
-        binding.albumRv.setHasFixedSize(true)
-        linearLayoutManager = LinearLayoutManager(this.context)
-        binding.albumRv.layoutManager = linearLayoutManager
-
-
-        getMyData()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.albumRv.setHasFixedSize(true)
+        linearLayoutManager = LinearLayoutManager(this.context)
+        binding.albumRv.layoutManager = linearLayoutManager
+
+        getMyData()
     }
 
     private fun getMyData(){
@@ -67,8 +67,8 @@ class FragmentAlbum: Fragment() {
                 albumAdapter.notifyDataSetChanged()
                 binding.albumRv.adapter = albumAdapter
             }
-
             override fun onFailure(call: Call<List<AlbumDataItem>?>, t: Throwable) {
+                Toast.makeText(requireContext(), t.message, Toast.LENGTH_SHORT).show()
             }
         })
     }
