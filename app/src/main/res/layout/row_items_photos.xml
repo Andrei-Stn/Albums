@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    xmlns:tools="http://schemas.android.com/tools"
     app:cardElevation="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <ImageView
@@ -22,18 +21,6 @@
             android:src="@mipmap/ic_launcher"
             />
 
-        <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="@string/title"
-            android:textSize="@dimen/medium_text_16sp"
-            app:layout_constraintTop_toTopOf="parent"
-            android:singleLine="false"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/ivPhoto"
-            android:layout_marginStart="15dp"
-            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

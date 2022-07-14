@@ -7,11 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.albums.Adapter.AlbumAdapter
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.albums.Adapter.PhotosAdapter
 import com.example.albums.Interface.ApiInterface
-import com.example.albums.Model.AlbumDataItem
 import com.example.albums.Model.PhotosDataItem
 import com.example.albums.databinding.FragmentPhotosBinding
 import retrofit2.Call
@@ -25,14 +23,14 @@ class FragmentPhotos : Fragment() {
     private val binding get() = _binding!!
 
     lateinit var photosAdapter: PhotosAdapter
-    private lateinit var linearLayoutManager: LinearLayoutManager
+    private lateinit var gridLayout: GridLayoutManager
 
     val args: FragmentPhotosArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentPhotosBinding.inflate(inflater, container, false)
 
         return binding.root
@@ -42,8 +40,8 @@ class FragmentPhotos : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.photosRv.hasFixedSize()
-        linearLayoutManager = LinearLayoutManager(context)
-        binding.photosRv.layoutManager = linearLayoutManager
+        gridLayout = GridLayoutManager(context, 3)
+        binding.photosRv.layoutManager = gridLayout
 
         getMyPhotos()
     }
@@ -75,5 +73,4 @@ class FragmentPhotos : Fragment() {
 
         })
     }
-
 }
