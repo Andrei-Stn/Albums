@@ -34,5 +34,17 @@
         tools:layout="@layout/fragment_photos" >
         <argument android:name="photosId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_fragmentPhotos_to_fragmentPhotoDetail"
+            app:destination="@id/fragmentPhotoDetail" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentPhotoDetail"
+        android:name="com.example.albums.Fragments.FragmentPhotoDetail"
+        android:label="fragment_photo_detail"
+        tools:layout="@layout/fragment_photo_detail" >
+        <argument
+            android:name="currentPhoto"
+            app:argType="com.example.albums.Model.PhotosDataItem" />
     </fragment>
 </navigation>
