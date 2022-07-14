@@ -44,17 +44,17 @@ class FragmentAlbum: Fragment() {
         linearLayoutManager = LinearLayoutManager(this.context)
         binding.albumRv.layoutManager = linearLayoutManager
 
-        getMyData()
+        getMyAlbums()
     }
 
-    private fun getMyData(){
+    private fun getMyAlbums(){
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(BASE_URL)
             .build()
             .create(ApiInterface::class.java)
 
-        val retrofitData = retrofitBuilder.getData()
+        val retrofitData = retrofitBuilder.getAlbums()
 
         retrofitData.enqueue(object : Callback<List<AlbumDataItem>?> {
             override fun onResponse(

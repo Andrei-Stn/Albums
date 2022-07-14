@@ -10,6 +10,6 @@
         android:title="@string/home" />
     <item
         android:id="@+id/favouriteFragment"
-        android:icon="@drawable/ic_baseline_settings_24"
+        android:icon="@drawable/ic_baseline_favorite_24"
         android:title="@string/favourite" />
 </menu>

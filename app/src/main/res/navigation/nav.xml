@@ -9,7 +9,14 @@
         android:id="@+id/albumFragment"
         android:name="com.example.albums.Fragments.FragmentAlbum"
         android:label="FragmentAlbum"
-        tools:layout="@layout/fragment_albums"/>
+        tools:layout="@layout/fragment_albums">
+        <argument
+            android:name="albumId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_albumFragment_to_fragmentPhotos"
+            app:destination="@id/fragmentPhotos" />
+    </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.albums.Fragments.FragmentHome"
@@ -20,4 +27,12 @@
         android:name="com.example.albums.Fragments.FragmentFavourite"
         android:label="FragmentFavourite"
         tools:layout="@layout/fragment_favourite"/>
+    <fragment
+        android:id="@+id/fragmentPhotos"
+        android:name="com.example.albums.Fragments.FragmentPhotos"
+        android:label="fragment_photos"
+        tools:layout="@layout/fragment_photos" >
+        <argument android:name="photosId"
+            app:argType="integer" />
+    </fragment>
 </navigation>
