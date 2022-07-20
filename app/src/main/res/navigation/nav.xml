@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/albumFragment"
-        android:name="com.example.albums.Fragments.FragmentAlbum"
+        android:name="com.example.albums.fragments.FragmentAlbum"
         android:label="FragmentAlbum"
         tools:layout="@layout/fragment_albums">
         <argument
@@ -19,17 +19,17 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.albums.Fragments.FragmentHome"
+        android:name="com.example.albums.fragments.FragmentHome"
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home"/>
     <fragment
         android:id="@+id/favouriteFragment"
-        android:name="com.example.albums.Fragments.FragmentFavourite"
+        android:name="com.example.albums.fragments.FragmentFavourite"
         android:label="FragmentFavourite"
         tools:layout="@layout/fragment_favourite"/>
     <fragment
         android:id="@+id/fragmentPhotos"
-        android:name="com.example.albums.Fragments.FragmentPhotos"
+        android:name="com.example.albums.fragments.FragmentPhotos"
         android:label="fragment_photos"
         tools:layout="@layout/fragment_photos" >
         <argument android:name="photosId"
@@ -40,11 +40,11 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentPhotoDetail"
-        android:name="com.example.albums.Fragments.FragmentPhotoDetail"
+        android:name="com.example.albums.fragments.FragmentPhotoDetail"
         android:label="fragment_photo_detail"
         tools:layout="@layout/fragment_photo_detail" >
         <argument
             android:name="currentPhoto"
-            app:argType="com.example.albums.Model.PhotosDataItem" />
+            app:argType="com.example.albums.model.PhotosDataItem" />
     </fragment>
 </navigation>

@@ -1,7 +1,7 @@
-package com.example.albums.Interface
+package com.example.albums.retrofit
 
-import com.example.albums.Model.AlbumDataItem
-import com.example.albums.Model.PhotosDataItem
+import com.example.albums.model.AlbumDataItem
+import com.example.albums.model.PhotosDataItem
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

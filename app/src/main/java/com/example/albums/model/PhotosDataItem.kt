@@ -1,4 +1,4 @@
-package com.example.albums.Model
+package com.example.albums.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

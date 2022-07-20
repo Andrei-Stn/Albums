@@ -1,4 +1,4 @@
-package com.example.albums.Fragments
+package com.example.albums.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -15,7 +15,7 @@ class FragmentPhotoDetail : Fragment() {
     private var _binding: FragmentPhotoDetailBinding? = null
     private val binding get() = _binding!!
 
-    val args: FragmentPhotoDetailArgs by navArgs()
+    private val args: FragmentPhotoDetailArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
