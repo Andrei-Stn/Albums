@@ -1,22 +1,22 @@
-package com.example.albums.Fragments
+package com.example.albums.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.albums.databinding.FragmentHomeBinding
+import com.example.albums.databinding.FragmentFavouriteBinding
 
-class FragmentHome: Fragment() {
-    private var _binding: FragmentHomeBinding? = null
+class FragmentFavourite: Fragment() {
+    private var _binding: FragmentFavouriteBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+    ): View {
+        _binding = FragmentFavouriteBinding.inflate(inflater, container, false)
 
         return binding.root
     }

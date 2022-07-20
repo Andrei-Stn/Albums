@@ -1,3 +1,3 @@
-package com.example.albums.Model
+package com.example.albums.model
 
 class AlbumData : ArrayList<AlbumDataItem>()

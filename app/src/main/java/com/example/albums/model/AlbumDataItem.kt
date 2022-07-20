@@ -1,4 +1,4 @@
-package com.example.albums.Model
+package com.example.albums.model
 
 data class AlbumDataItem(
     val id: Int,
