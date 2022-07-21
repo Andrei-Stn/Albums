@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.albums.adapter.AlbumAdapter
 import com.example.albums.databinding.FragmentAlbumsBinding
 import com.example.albums.viewModel.AlbumViewModel
+import kotlinx.android.synthetic.main.fragment_albums.*
 
 class FragmentAlbum: Fragment() {
     private var _binding: FragmentAlbumsBinding? = null
@@ -33,6 +34,11 @@ class FragmentAlbum: Fragment() {
         initRecycler()
 
         getAlbum()
+
+        binding.swiperefresh.setOnRefreshListener {
+            getAlbum()
+            swiperefresh.isRefreshing = false
+        }
 
         return binding.root
     }

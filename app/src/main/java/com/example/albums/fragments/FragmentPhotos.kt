@@ -13,6 +13,7 @@ import com.example.albums.adapter.PhotosAdapter
 import com.example.albums.databinding.FragmentPhotosBinding
 import com.example.albums.viewModel.PhotosViewModel
 import com.example.albums.viewModel.PhotosViewModelFactory
+import kotlinx.android.synthetic.main.fragment_albums.*
 
 const val GRID_SPAN = 3
 
@@ -42,6 +43,11 @@ class FragmentPhotos : Fragment() {
         initRecycler()
 
         getPhotos(args.photosId)
+
+        binding.swiperefresh.setOnRefreshListener {
+            getPhotos(args.photosId)
+            swiperefresh.isRefreshing = false
+        }
 
         return binding.root
     }
