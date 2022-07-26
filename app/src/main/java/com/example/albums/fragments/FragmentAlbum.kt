@@ -52,8 +52,7 @@ class FragmentAlbum: Fragment() {
     private fun getAlbum(){
         viewModel.albumsLiveData.observe(viewLifecycleOwner) {
             if(it != null){
-                albumAdapter.setAlbumList(it)
-                albumAdapter.notifyDataSetChanged()
+                albumAdapter.submitList(it)
                 binding.albumRv.adapter = albumAdapter
             }else{
                 Toast.makeText(requireContext(), "Error in getting list", Toast.LENGTH_SHORT).show()

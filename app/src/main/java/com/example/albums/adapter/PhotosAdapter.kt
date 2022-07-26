@@ -4,6 +4,8 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.model.GlideUrl
@@ -15,12 +17,16 @@ import com.example.albums.databinding.RowItemsPhotosBinding
 
 class PhotosAdapter(
     private val context: Context):
-    RecyclerView.Adapter<PhotosAdapter.PhotosViewHolder>() {
+    ListAdapter<PhotosDataItem, PhotosAdapter.PhotosViewHolder>(PhotosDiffCallback()) {
 
-    private var photosList: List<PhotosDataItem>? = null
+    class PhotosDiffCallback: DiffUtil.ItemCallback<PhotosDataItem>(){
+        override fun areItemsTheSame(oldItem: PhotosDataItem, newItem: PhotosDataItem): Boolean {
+            return oldItem.id == newItem.id
+        }
 
-    fun setPhotosList(photosList: List<PhotosDataItem>){
-        this.photosList = photosList
+        override fun areContentsTheSame(oldItem: PhotosDataItem, newItem: PhotosDataItem): Boolean {
+            return oldItem == newItem
+        }
     }
 
     class PhotosViewHolder(val binding: RowItemsPhotosBinding):
@@ -34,7 +40,7 @@ class PhotosAdapter(
 
     override fun onBindViewHolder(holder: PhotosViewHolder, position: Int) {
         holder.binding.apply {
-            val currentPosition = photosList!![position]
+            val currentPosition = getItem(position)
             val url = GlideUrl(
                 currentPosition.url, LazyHeaders.Builder()
                     .addHeader("User-Agent", "your-user-agent")
@@ -43,13 +49,9 @@ class PhotosAdapter(
             Glide.with(context).load(url).into(ivPhoto)
             holder.itemView.setOnClickListener {
                 val directions = FragmentPhotosDirections
-                    .actionFragmentPhotosToFragmentPhotoDetail(photosList!![position])
+                    .actionFragmentPhotosToFragmentPhotoDetail(currentPosition)
                 it.findNavController().navigate(directions)
             }
         }
-    }
-
-    override fun getItemCount(): Int {
-        return photosList!!.size
     }
 }
