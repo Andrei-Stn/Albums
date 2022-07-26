@@ -61,8 +61,7 @@ class FragmentPhotos : Fragment() {
     private fun getPhotos(albumId: Int){
         viewModel.photosLiveData.observe(viewLifecycleOwner){
             if(it.isNotEmpty()){
-                photosAdapter.setPhotosList(it)
-                photosAdapter.notifyDataSetChanged()
+                photosAdapter.submitList(it)
                 binding.photosRv.adapter = photosAdapter
             } else{
                 Toast.makeText(requireContext(), "Error in getting list", Toast.LENGTH_SHORT).show()

@@ -3,17 +3,23 @@ package com.example.albums.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.albums.fragments.FragmentAlbumDirections
 import com.example.albums.model.AlbumDataItem
 import com.example.albums.databinding.RowItemsAlbumsBinding
 
-class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>() {
+class AlbumAdapter : ListAdapter<AlbumDataItem, AlbumAdapter.AlbumViewHolder>(AlbumDataDiffCallback()) {
 
-    private var albumList: List<AlbumDataItem>? = null
+    class AlbumDataDiffCallback: DiffUtil.ItemCallback<AlbumDataItem>(){
+        override fun areItemsTheSame(oldItem: AlbumDataItem, newItem: AlbumDataItem): Boolean {
+            return oldItem.id == newItem.id
+        }
 
-    fun setAlbumList(albumList: List<AlbumDataItem>?){
-        this.albumList =  albumList
+        override fun areContentsTheSame(oldItem: AlbumDataItem, newItem: AlbumDataItem): Boolean {
+            return oldItem == newItem
+        }
     }
 
     class AlbumViewHolder(val binding: RowItemsAlbumsBinding) :
@@ -26,20 +32,17 @@ class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: AlbumViewHolder, position: Int) {
+        val item = getItem(position)
         holder.binding.apply {
 
-            val currentPosition = albumList!![position]
+            val currentPosition = getItem(position)
             tvId.text = currentPosition.id.toString()
             tvTitle.text = currentPosition.title
         }
         holder.itemView.setOnClickListener {
             val directions =
-                FragmentAlbumDirections.actionAlbumFragmentToFragmentPhotos(albumList!![position].id)
+                FragmentAlbumDirections.actionAlbumFragmentToFragmentPhotos(item.id)
             it.findNavController().navigate(directions)
         }
-    }
-
-    override fun getItemCount(): Int {
-        return albumList!!.size
     }
 }
